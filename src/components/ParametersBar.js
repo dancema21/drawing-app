@@ -1,6 +1,8 @@
 import Parameter from "./Parameter";
 
-const ParametersBar = () => {
+const ParametersBar = (props) => {
+  const setSize = props.setSize;
+
   return (
     <div>
       <Parameter name={"Color"}>
@@ -19,7 +21,11 @@ const ParametersBar = () => {
       </Parameter>
       <Parameter name={"Size"} />
       {["1", "2", "3", "4", "5"].map((number) => {
-        return <div key={number}>{number}</div>;
+        return (
+          <div key={number} onClick={() => setSize(number)}>
+            {number}
+          </div>
+        );
       })}
     </div>
   );

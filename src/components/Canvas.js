@@ -1,29 +1,35 @@
-import { useLayoutEffect, useState, useRef } from "react";
+import { useLayoutEffect, useState, useRef, useCallback } from "react";
 import CanvasActionsBar from "./CanvasActionsBar";
 
-const Canvas = () => {
+const Canvas = (props) => {
   const canvasEl = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [positions, setPositions] = useState([]);
 
+  const size = props.size;
+
+  const drawLine = useCallback(() => {
+    const ctx = canvasEl.current.getContext("2d");
+    ctx.beginPath();
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = size;
+    ctx.moveTo(
+      positions[positions.length - 2].x,
+      positions[positions.length - 2].y
+    );
+    ctx.lineTo(
+      positions[positions.length - 1].x,
+      positions[positions.length - 1].y
+    );
+    ctx.stroke();
+    ctx.closePath();
+  }, [size, positions])
+
   useLayoutEffect(() => {
     if (positions.length > 1) {
-      const ctx = canvasEl.current.getContext("2d");
-      ctx.beginPath();
-      ctx.strokeStyle = "black";
-      ctx.lineWidth = 1;
-      ctx.moveTo(
-        positions[positions.length - 2].x,
-        positions[positions.length - 2].y
-      );
-      ctx.lineTo(
-        positions[positions.length - 1].x,
-        positions[positions.length - 1].y
-      );
-      ctx.stroke();
-      ctx.closePath();
+      drawLine()
     }
-  }, [positions]);
+  }, [positions, drawLine]);
 
   const handleMouseDown = function (e) {
     setIsDrawing(true);
