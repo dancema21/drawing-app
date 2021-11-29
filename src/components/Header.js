@@ -1,8 +1,8 @@
 const Header = () => {
     return(
-        <nav>
-            Heyyy
-        </nav>
+        <header>
+            Draw App
+        </header>
     )
 }
 
