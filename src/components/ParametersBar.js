@@ -2,16 +2,18 @@ import Parameter from "./Parameter";
 
 const ParametersBar = (props) => {
   const setSize = props.setSize;
+  const setColor = props.setColor;
 
   return (
     <div>
       <Parameter name={"Color"}>
-        {["0", "100", "150", "200", "250"].map((number) => {
+        {["black", "blue", "purple", "green", "yellow", "teal"].map((color) => {
           return (
             <div
-              key={number}
+              key={color}
+              onClick={() => setColor(color)}
               style={{
-                backgroundColor: `rgba(${number},${number},${number},1)`,
+                backgroundColor: color,
                 width: "50px",
                 height: "50px",
               }}

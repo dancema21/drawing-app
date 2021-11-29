@@ -7,11 +7,12 @@ const Canvas = (props) => {
   const [positions, setPositions] = useState([]);
 
   const size = props.size;
+  const color = props.color;
 
   const drawLine = useCallback(() => {
     const ctx = canvasEl.current.getContext("2d");
     ctx.beginPath();
-    ctx.strokeStyle = "black";
+    ctx.strokeStyle = color;
     ctx.lineWidth = size;
     ctx.moveTo(
       positions[positions.length - 2].x,
@@ -23,7 +24,7 @@ const Canvas = (props) => {
     );
     ctx.stroke();
     ctx.closePath();
-  }, [size, positions]);
+  }, [size, color, positions]);
 
   useLayoutEffect(() => {
     if (positions.length > 1) {

@@ -5,11 +5,12 @@ import ParametersBar from "./ParametersBar";
 
 const ChangeableCanvas = () => {
   const [size, setSize] = useState("1");
+  const [color, setColor] = useState("black");
 
   return (
     <div>
-      <ParametersBar setSize={setSize} />
-      <Canvas size={size} />
+      <ParametersBar setSize={setSize} setColor={setColor} />
+      <Canvas size={size} color={color} />
     </div>
   );
 };
