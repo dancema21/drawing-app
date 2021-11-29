@@ -23,11 +23,11 @@ const Canvas = (props) => {
     );
     ctx.stroke();
     ctx.closePath();
-  }, [size, positions])
+  }, [size, positions]);
 
   useLayoutEffect(() => {
     if (positions.length > 1) {
-      drawLine()
+      drawLine();
     }
   }, [positions, drawLine]);
 
