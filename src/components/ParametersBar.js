@@ -2,6 +2,7 @@ import Parameter from "./Parameter";
 
 const ParametersBar = (props) => {
   const setSize = props.setSize;
+  const size = props.size;
   const setColor = props.setColor;
 
   return (
@@ -22,13 +23,10 @@ const ParametersBar = (props) => {
         })}
       </Parameter>
       <Parameter name={"Size"} />
-      {["1", "2", "3", "4", "5"].map((number) => {
-        return (
-          <div key={number} onClick={() => setSize(number)}>
-            {number}
+          <div>
+            <label htmlFor="size">Size</label>
+            <input type="range" id="size" name="size" min="1" max="6" onChange={(e) => setSize(e.target.value)} value={size} />
           </div>
-        );
-      })}
     </div>
   );
 };

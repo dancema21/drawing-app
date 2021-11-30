@@ -9,7 +9,7 @@ const ChangeableCanvas = () => {
 
   return (
     <div>
-      <ParametersBar setSize={setSize} setColor={setColor} />
+      <ParametersBar size={size} setSize={setSize} setColor={setColor} />
       <Canvas size={size} color={color} />
     </div>
   );
