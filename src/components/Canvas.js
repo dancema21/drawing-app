@@ -11,58 +11,39 @@ import CustomCursor from "./CustomCursor";
 const Canvas = (props) => {
   const canvasEl = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
-  const [drawingPositions, setDrawingPositions] = useState([]);
-  const [customCursorPosition, setCustomCursorPosition] = useState(null);
+  const [position, setPosition] = useState(null);
 
-  const size = props.size;
+  const size = parseInt(props.size,10);
   const color = props.color;
 
-  const drawLine = useCallback(() => {
-    const ctx = canvasEl.current.getContext("2d");
-    ctx.beginPath();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = size;
-    ctx.moveTo(
-      drawingPositions[drawingPositions.length - 2].x,
-      drawingPositions[drawingPositions.length - 2].y
-    );
-    ctx.lineTo(
-      drawingPositions[drawingPositions.length - 1].x,
-      drawingPositions[drawingPositions.length - 1].y
-    );
-    ctx.stroke();
-    ctx.closePath();
-  }, [size, color, drawingPositions]);
-
   useLayoutEffect(() => {
-    if (drawingPositions.length > 1) {
-      drawLine();
+    if (isDrawing && position){
+      const ctx = canvasEl.current.getContext("2d");
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.arc(position.x, position.y, size+4, 0, Math.PI*2);
+      ctx.closePath();
+      ctx.fill();
     }
-  }, [drawingPositions, drawLine]);
+  }, [position, isDrawing, color, size]);
 
   const handleMouseDown = function (e) {
     setIsDrawing(true);
     const rect = canvasEl.current.getBoundingClientRect();
     const x = e.clientX - rect.x;
     const y = e.clientY - rect.y;
-    setDrawingPositions(drawingPositions.concat([{ x: x, y: y }]));
+    setPosition({ x: x, y: y });
   };
 
   const handleMouseUp = function () {
     setIsDrawing(false);
-    setDrawingPositions([]);
   };
 
   const handleMouseMove = function (e) {
     const rect = canvasEl.current.getBoundingClientRect();
-    setCustomCursorPosition(e);
-
-    if (isDrawing) {
-      setCustomCursorPosition(null);
-      const x = e.clientX - rect.x;
-      const y = e.clientY - rect.y;
-      setDrawingPositions(drawingPositions.concat([{ x: x, y: y }]));
-    }
+    const x = e.clientX - rect.x;
+    const y = e.clientY - rect.y;
+    setPosition({ x: x, y: y });
   };
 
   return (
@@ -72,12 +53,13 @@ const Canvas = (props) => {
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
-        onMouseLeave={() => setCustomCursorPosition(null)}
+        onMouseLeave={() => setPosition(null)}
         style={{ cursor: "none" }}
       ></canvas>
-      {customCursorPosition && (
+      {position && (
         <CustomCursor
-          customCursorPosition={customCursorPosition}
+          ref={canvasEl}
+          position={position}
           color={color}
           size={size}
         />
