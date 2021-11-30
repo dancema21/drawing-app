@@ -1,10 +1,4 @@
-import {
-  useLayoutEffect,
-  useEffect,
-  useState,
-  useRef,
-  useCallback,
-} from "react";
+import { useLayoutEffect, useState, useRef } from "react";
 import CanvasActionsBar from "./CanvasActionsBar";
 import CustomCursor from "./CustomCursor";
 
@@ -13,15 +7,15 @@ const Canvas = (props) => {
   const [isDrawing, setIsDrawing] = useState(false);
   const [position, setPosition] = useState(null);
 
-  const size = parseInt(props.size,10);
+  const size = parseInt(props.size, 10);
   const color = props.color;
 
   useLayoutEffect(() => {
-    if (isDrawing && position){
+    if (isDrawing && position) {
       const ctx = canvasEl.current.getContext("2d");
       ctx.beginPath();
       ctx.fillStyle = color;
-      ctx.arc(position.x, position.y, size+4, 0, Math.PI*2);
+      ctx.arc(position.x, position.y, size + 4, 0, Math.PI * 2);
       ctx.closePath();
       ctx.fill();
     }
@@ -56,7 +50,7 @@ const Canvas = (props) => {
         onMouseLeave={() => setPosition(null)}
         style={{ cursor: "none" }}
       ></canvas>
-      {position && (
+      {position && !isDrawing && (
         <CustomCursor
           ref={canvasEl}
           position={position}
