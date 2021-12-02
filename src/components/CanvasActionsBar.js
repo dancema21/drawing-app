@@ -1,4 +1,6 @@
 import React from "react";
+import { BsFillEraserFill } from "react-icons/bs";
+import { AiOutlineDownload } from "react-icons/ai";
 
 const CanvasActionsBar = React.forwardRef((props, ref) => {
   const handleClick = function () {
@@ -14,10 +16,19 @@ const CanvasActionsBar = React.forwardRef((props, ref) => {
   }
 
   return (
-    <div style={{position: "absolute", top:"75px", right: "3px"}}>
-      <div onClick={handleClick}>Clear</div>
+    <div
+      style={{
+        position: "absolute",
+        top: "85px",
+        right: "10px",
+        fontSize: "30px",
+      }}
+    >
+      <div onClick={handleClick} style={{ cursor: "pointer" }}>
+        <BsFillEraserFill />
+      </div>
       <a href={downloadLink} download="my-drawing">
-        Download
+        <AiOutlineDownload />
       </a>
     </div>
   );

@@ -11,8 +11,8 @@ const CustomCursor = React.forwardRef((props, ref) => {
     <div
       style={{
         position: "absolute",
-        height: `${9 + size}px`,
-        width: `${9 + size}px`,
+        width: `${15 + 3 * (size-3)}px`,
+        height: `${15 + 3 * (size-3)}px`,
         backgroundColor: `${color}`,
         borderRadius: "50%",
         cursor: "none",

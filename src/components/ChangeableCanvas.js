@@ -8,8 +8,8 @@ const ChangeableCanvas = () => {
   const [color, setColor] = useState("black");
 
   return (
-    <div style={{display: "flex"}}>
-      <ParametersBar size={size} setSize={setSize} setColor={setColor} />
+    <div style={{ display: "flex" }}>
+      <ParametersBar setSize={setSize} setColor={setColor} />
       <Canvas size={size} color={color} />
     </div>
   );
