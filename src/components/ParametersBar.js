@@ -36,11 +36,11 @@ const ParametersBar = (props) => {
                   backgroundColor: "black",
                   width: `${15 + 3 * e}px`,
                   height: `${15 + 3 * e}px`,
-                  value: `${e + 2}`,
                   borderRadius: "50%",
                   margin: "auto auto",
                 }}
-                onClick={(e) => setSize(e.target.value)}
+                data-size={e + 3}
+                onClick={(element) => setSize(element.target.dataset.size)}
               ></div>
             </div>
           );
