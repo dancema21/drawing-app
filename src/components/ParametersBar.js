@@ -1,4 +1,5 @@
 import Parameter from "./Parameter";
+import "./ParametersBar.css";
 
 const ParametersBar = (props) => {
   const setSize = props.setSize;
@@ -6,7 +7,10 @@ const ParametersBar = (props) => {
   const setColor = props.setColor;
 
   return (
-    <div>
+    <div className="parameters-bar">
+      <div className="parameter-text">
+        <span>let's draw</span>
+      </div>
       <Parameter name={"Color"}>
         {["black", "blue", "purple", "green", "yellow", "teal"].map((color) => {
           return (

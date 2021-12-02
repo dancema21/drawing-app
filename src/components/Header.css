@@ -1,0 +1,15 @@
+header {
+  font-size: 42px;
+  border-bottom: black solid 1px;
+  font-weight: 600;
+  height: 73px;
+}
+
+header > div {
+  margin-left: 110px;
+  border-left: black solid 1px;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0 0 3px 10px;
+}

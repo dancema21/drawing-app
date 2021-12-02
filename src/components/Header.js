@@ -1,7 +1,11 @@
+import "./Header.css";
+
 const Header = () => {
     return(
         <header>
-            Draw App
+            <div>
+                THE DRAWING APP
+            </div>
         </header>
     )
 }

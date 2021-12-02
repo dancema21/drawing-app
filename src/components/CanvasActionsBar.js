@@ -14,7 +14,7 @@ const CanvasActionsBar = React.forwardRef((props, ref) => {
   }
 
   return (
-    <div>
+    <div className="actions-bar">
       <div onClick={handleClick}>Clear</div>
       <a href={downloadLink} download="my-drawing">
         Download

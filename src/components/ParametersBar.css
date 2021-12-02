@@ -1,0 +1,20 @@
+.parameters-bar {
+  width: 110px;
+  border-right: black solid 1px;
+}
+
+.parameter-text {
+  font-size: 30px;
+  font-weight: 400;
+  height: 200px;
+  position: relative;
+  border-bottom: black solid 1px;
+}
+
+span {
+  transform: rotate(-90deg);
+  width: 200px;
+  position: absolute;
+  bottom: 95px;
+  left: -15px;
+}
