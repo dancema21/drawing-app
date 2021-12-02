@@ -8,7 +8,6 @@
   font-weight: 400;
   height: 200px;
   position: relative;
-  border-bottom: black solid 1px;
 }
 
 span {
@@ -17,4 +16,12 @@ span {
   position: absolute;
   bottom: 95px;
   left: -15px;
+}
+
+.grid {
+  height: 150px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 10px;
+  border-top: black solid 1px;
 }
