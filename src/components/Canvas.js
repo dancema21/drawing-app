@@ -10,6 +10,9 @@ const Canvas = (props) => {
   const size = parseInt(props.size, 10);
   const color = props.color;
 
+  const width = `${window.innerWidth - 110}px`;
+  const heigth = `${window.innerHeight - 73}px`;
+
   useLayoutEffect(() => {
     if (isDrawing && position) {
       const ctx = canvasEl.current.getContext("2d");
@@ -48,7 +51,9 @@ const Canvas = (props) => {
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
         onMouseLeave={() => setPosition(null)}
-        style={{ cursor: "none" }}
+        width={width}
+        height={heigth}
+        style={{cursor: "none"}}
       ></canvas>
       {position && !isDrawing && (
         <CustomCursor

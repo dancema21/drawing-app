@@ -3,6 +3,7 @@ header {
   border-bottom: black solid 1px;
   font-weight: 600;
   height: 73px;
+  background-color: #b18fcf;
 }
 
 header > div {

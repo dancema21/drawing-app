@@ -38,6 +38,7 @@ const ParametersBar = (props) => {
                   height: `${15 + 3 * e}px`,
                   borderRadius: "50%",
                   margin: "auto auto",
+                  cursor: "pointer"
                 }}
                 data-size={e + 3}
                 onClick={(element) => setSize(element.target.dataset.size)}
@@ -61,6 +62,7 @@ const ParametersBar = (props) => {
                 borderRadius: "50%",
                 gridAutoColumn: "auto",
                 margin: "auto auto",
+                cursor:"pointer"
               }}
             />
           );
