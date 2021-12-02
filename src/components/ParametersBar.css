@@ -1,6 +1,7 @@
 .parameters-bar {
   width: 110px;
   border-right: black solid 1px;
+  min-height: calc(100vh - 73px);
 }
 
 .parameter-text {
@@ -19,9 +20,16 @@ span {
 }
 
 .grid {
-  height: 150px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding: 10px;
   border-top: black solid 1px;
+}
+
+.grid-size {
+  height: 150px;
+}
+
+.grid-color {
+  height: 220px;
 }

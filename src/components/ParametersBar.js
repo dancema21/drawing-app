@@ -23,7 +23,7 @@ const ParametersBar = (props) => {
         <span>let's draw !</span>
       </div>
 
-      <div className="grid">
+      <div className="grid grid-size">
         {[10, 8, 6, 4, 2].map((e) => {
           const style =
             e === 10
@@ -47,7 +47,7 @@ const ParametersBar = (props) => {
         })}
       </div>
 
-      <div className="grid">
+      <div className="grid grid-color">
         {COLORS.map((color) => {
           return (
             <div

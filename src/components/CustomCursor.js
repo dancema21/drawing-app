@@ -11,10 +11,10 @@ const CustomCursor = React.forwardRef((props, ref) => {
     <div
       style={{
         position: "absolute",
-        height: `${7 + size}px`,
-        width: `${7 + size}px`,
+        height: `${9 + size}px`,
+        width: `${9 + size}px`,
         backgroundColor: `${color}`,
-        borderRadius: "3px",
+        borderRadius: "50%",
         cursor: "none",
         transition: "width 2s, height 2s, background-color 2s, transform 2s",
         left: `${rect.left + position.x}px`,
