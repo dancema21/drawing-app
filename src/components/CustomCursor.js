@@ -1,11 +1,9 @@
-import React from "react";
+import { useState } from "react";
 
-const CustomCursor = React.forwardRef((props, ref) => {
-  const position = props.position;
+const CustomCursor = (props) => {
   const color = props.color;
   const size = parseInt(props.size, 10);
-
-  const rect = ref.current.getBoundingClientRect();
+  const position = props.position;
 
   return (
     <div
@@ -17,11 +15,11 @@ const CustomCursor = React.forwardRef((props, ref) => {
         borderRadius: "50%",
         cursor: "none",
         transition: "width 2s, height 2s, background-color 2s, transform 2s",
-        left: `${rect.left + position.x}px`,
-        top: `${rect.top + position.y}px`,
+        left: `${position.x}px`,
+        top: `${position.y}px`,
       }}
     ></div>
   );
-});
+};
 
 export default CustomCursor;
