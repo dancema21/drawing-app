@@ -18,7 +18,7 @@ const Canvas = (props) => {
       const ctx = canvasEl.current.getContext("2d");
       ctx.beginPath();
       ctx.fillStyle = color;
-      ctx.arc(position.x + 16, position.y + 16, size + 4, 0, Math.PI * 2);
+      ctx.arc(position.x, position.y, size + 4, 0, Math.PI * 2);
       ctx.closePath();
       ctx.fill();
     }
