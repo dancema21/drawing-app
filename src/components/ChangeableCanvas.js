@@ -4,7 +4,7 @@ import Canvas from "./Canvas";
 import ParametersBar from "./ParametersBar";
 
 const ChangeableCanvas = () => {
-  const [size, setSize] = useState("1");
+  const [size, setSize] = useState("23");
   const [color, setColor] = useState("black");
 
   return (

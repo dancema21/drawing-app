@@ -24,9 +24,9 @@ const ParametersBar = (props) => {
       </div>
 
       <div className="grid grid-size">
-        {[10, 8, 6, 4, 2].map((e) => {
+        {[50, 37, 32, 28, 23].map((e) => {
           const style =
-            e === 10
+            e === 50
               ? { display: "flex", gridColumn: "1/3" }
               : { display: "flex", gridAutoColumn: "auto" };
           return (
@@ -34,13 +34,13 @@ const ParametersBar = (props) => {
               <div
                 style={{
                   backgroundColor: "black",
-                  width: `${15 + 3 * e}px`,
-                  height: `${15 + 3 * e}px`,
+                  width: `${e}px`,
+                  height: `${e}px`,
                   borderRadius: "50%",
                   margin: "auto auto",
                   cursor: "pointer"
                 }}
-                data-size={e + 3}
+                data-size={e}
                 onClick={(element) => setSize(element.target.dataset.size)}
               ></div>
             </div>

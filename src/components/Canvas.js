@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import CanvasActionsBar from "./CanvasActionsBar";
 import CustomCursor from "./CustomCursor";
 
@@ -10,31 +10,30 @@ const Canvas = (props) => {
   const size = parseInt(props.size, 10);
   const color = props.color;
 
-
-  const width = `${window.innerWidth - 110}px`;
-  const heigth = `${window.innerHeight - 73}px`;
-
   useEffect(() => {
     const canvas = canvasEl.current
     if (canvas) {
-        const ctx = canvasEl.current.getContext('2d');
+        const width = window.innerWidth - 110;
+        const heigth = window.innerHeight - 73
+        canvas.width = width;
+        canvas.height = heigth;
 
+        const ctx = canvasEl.current.getContext('2d');
         ctx.fillStyle = "white";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
-  }, [canvasEl])
+  }, [])
 
   const drawLine = (x,y) => {
     if (isDrawing && position) {
       const ctx = canvasEl.current.getContext("2d");
       ctx.beginPath();
-      ctx.fillStyle = color;
+      ctx.strokeStyle = color;
       ctx.lineWidth = size;
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
       ctx.moveTo(position.x, position.y);
-      ctx.lineTo(x, y);
-
+      ctx.lineTo(x,y);
       ctx.stroke();
       ctx.closePath();
     } 
@@ -71,8 +70,6 @@ const Canvas = (props) => {
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        width={width}
-        height={heigth}
         style={{cursor: "none"}}
       ></canvas>
       {position && !isDrawing && (
